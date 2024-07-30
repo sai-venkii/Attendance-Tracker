@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import './widgets/login_page.dart';
+import './widget/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,16 @@ class MyApp extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>LoginPageLayout(path: 'assets/images/student_login.png', role: 'Student''s Login')));
+           
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context)=>LoginPageLayout(
+                                path: 'assets/images/student_login.png',
+                                role: 'Student Login'
+                            )
+                        )
+                    );
                   },
                   child: Card(
                       child: Stack(
@@ -82,7 +91,15 @@ class MyApp extends StatelessWidget {
 
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>LoginPageLayout(path: 'assets/images/faculty_login.png', role: 'Faculty''s Login')));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context)=>LoginPageLayout(
+                                path: 'assets/images/faculty_login.png',
+                                role: 'Faculty Login'
+                            )
+                        )
+                    );
                   },
                   child:Card(
                       child: Stack(

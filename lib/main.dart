@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-
 import './widget/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: (){
+           
                     Navigator.push(
                         context,
                         MaterialPageRoute(

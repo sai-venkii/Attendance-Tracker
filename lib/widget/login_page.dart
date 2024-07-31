@@ -107,6 +107,7 @@ class LoginPageLayout extends StatelessWidget{
                                   hintText: "Password",
                                   hintStyle: TextStyle(color: Colors.grey)
                               ),
+                              obscureText: true,
                             ),
                           ),
                           SizedBox(height: 20,),

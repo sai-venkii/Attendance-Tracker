@@ -1,16 +1,29 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageLayout extends StatelessWidget{
   final String path;
   final String role;
   LoginPageLayout(
-      {
-        required this.path,
-        required this.role
-      }
+        {
+          super.key,
+          required this.path,
+          required this.role
+        }
       );
+  TextEditingController usernameController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
+  final CollectionReference sample=FirebaseFirestore.instance.collection("Sample");
+  Future<void> login() async{
+    sample.add(
+      {
+        'email': usernameController.text,
+        'password': passwordController.text
+      }
+    );
+  }
   @override
   Widget build (BuildContext context){
     return Scaffold(
@@ -72,6 +85,7 @@ class LoginPageLayout extends StatelessWidget{
                                 )
                             ),
                             child: TextField(
+                              controller: usernameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Username",
@@ -87,6 +101,7 @@ class LoginPageLayout extends StatelessWidget{
                                 ))
                             ),
                             child: TextField(
+                              controller: passwordController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Password",
@@ -95,32 +110,35 @@ class LoginPageLayout extends StatelessWidget{
                             ),
                           ),
                           SizedBox(height: 20,),
-                          Center(
-                              child :Text(
-                                "Forgot password?",
-                                style:TextStyle(
-                                    color:Color.fromRGBO(196, 135, 198, 1)
-                                ),
-                              )
-                          ),
+                          // Center(
+                          //     child :Text(
+                          //       "Forgot password?",
+                          //       style:TextStyle(
+                          //           color:Color.fromRGBO(196, 135, 198, 1)
+                          //       ),
+                          //     )
+                          // ),
                           SizedBox(
                             height: 40
                           ),
-                          Container(
-                            height: 50,
-                            margin: EdgeInsets.symmetric(horizontal: 60),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color.fromRGBO(49, 39, 79, 1),
-                            ),
-                            child:Center(
-                              child:Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white
-                                ),
+                          GestureDetector(
+                            onTap: login,
+                            child: Container(
+                              height: 50,
+                              margin: EdgeInsets.symmetric(horizontal: 60),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Color.fromRGBO(49, 39, 79, 1),
                               ),
-                            ) ,
+                              child:Center(
+                                child:Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Colors.white
+                                  ),
+                                ),
+                              ) ,
+                            ),
                           ),
                         ],
                       ),

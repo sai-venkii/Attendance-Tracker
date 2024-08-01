@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StudentPage extends StatefulWidget {
@@ -13,7 +12,7 @@ class _StudentPageState extends State<StudentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("Student Page"),
+        title:const Text("Student Page"),
       ),
         body:Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -48,12 +47,12 @@ class _StudentPageState extends State<StudentPage> {
 
               ),
             ),*/
-            SizedBox(
+            const SizedBox(
                 height: 40
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.symmetric(horizontal: 60),
+              margin: const EdgeInsets.symmetric(horizontal: 60),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: Colors.lightBlue[100],
@@ -62,7 +61,7 @@ class _StudentPageState extends State<StudentPage> {
                 style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll<Color>(Colors.cyan),
                 ),
-                child:Center(
+                child:const Center(
                   child:Text(
                     "Scan QR",
                     style: TextStyle(

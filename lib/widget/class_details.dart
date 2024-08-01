@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ClassDetails extends StatefulWidget {
@@ -134,8 +133,6 @@ class _ClassDetailsState extends State<ClassDetails> {
 
             ),
           ),
-
-
         ]),
       ),
     );

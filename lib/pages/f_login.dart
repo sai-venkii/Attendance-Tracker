@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'class_details.dart';
+import '../widget/class_details.dart';
 
 class FacultyPage extends StatefulWidget {
   const FacultyPage({super.key});
@@ -15,7 +14,7 @@ class _FacultyPageState extends State<FacultyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("Faculty Page"),
+        title:const Text("Faculty Page"),
       ),
       body:Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -51,12 +50,12 @@ class _FacultyPageState extends State<FacultyPage> {
             ),
           ),
           */
-          SizedBox(
+          const SizedBox(
               height: 40
           ),
           Container(
             height: 50,
-            margin: EdgeInsets.symmetric(horizontal: 60),
+            margin: const EdgeInsets.symmetric(horizontal: 60),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: Colors.lightBlue[100],
@@ -65,7 +64,7 @@ class _FacultyPageState extends State<FacultyPage> {
               style: const ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll<Color>(Colors.cyan),
               ),
-              child:Center(
+              child:const Center(
                 child:Text(
                   "Generate QR",
                   style: TextStyle(
@@ -74,7 +73,7 @@ class _FacultyPageState extends State<FacultyPage> {
                 ),
               ) ,
               onPressed:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ClassDetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ClassDetails()));
               },
 
             ),

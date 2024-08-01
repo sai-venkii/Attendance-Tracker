@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:attendence/widget/f_login.dart';
-import 'package:attendence/widget/s_login.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageLayout extends StatelessWidget{
@@ -9,28 +9,32 @@ class LoginPageLayout extends StatelessWidget{
   final String role;
   final double h;
   final double w;
-  LoginPageLayout(
+  LoginPageLayout({super.key,
+    required this.path,
+    required this.role,
+    required this.h,
+    required this.w
+  });
+  final TextEditingController usernameController=TextEditingController();
+  final TextEditingController passwordController=TextEditingController();
+  final CollectionReference sample=FirebaseFirestore.instance.collection("Sample");
+  Future<void> login() async{
+    sample.add(
       {
-        required this.path,
-        required this.role,
-        required this.h,
-        required this.w
+        'email': usernameController.text,
+        'password': passwordController.text
       }
-      );
+    );
+  }
   @override
   Widget build (BuildContext context){
     return Scaffold(
         backgroundColor : Colors.white,
-        body:SafeArea(
-          child:Center(
-        child:SingleChildScrollView(
-        child: Column(
-
+        body: Column(
             crossAxisAlignment:CrossAxisAlignment.start ,
             children: <Widget>[
               SizedBox(
-                height:h,
-                width: w,
+                height:400,
                 child: Stack(
                   children:<Widget>[
                     Positioned(
@@ -83,6 +87,7 @@ class LoginPageLayout extends StatelessWidget{
                                 )
                             ),
                             child: TextField(
+                              controller: usernameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Username",
@@ -98,6 +103,7 @@ class LoginPageLayout extends StatelessWidget{
                                 ))
                             ),
                             child: TextField(
+                              controller: passwordController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Password",
@@ -105,16 +111,15 @@ class LoginPageLayout extends StatelessWidget{
                               ),
                             ),
                           ),
-                          /*Forget Password
                           SizedBox(height: 20,),
-                          Center(
-                              child :Text(
-                                "Forgot password?",
-                                style:TextStyle(
-                                    color:Color.fromRGBO(196, 135, 198, 1)
-                                ),
-                              )
-                          ),*/
+                          // Center(
+                          //     child :Text(
+                          //       "Forgot password?",
+                          //       style:TextStyle(
+                          //           color:Color.fromRGBO(196, 135, 198, 1)
+                          //       ),
+                          //     )
+                          // ),
                           SizedBox(
                             height: 40
                           ),
@@ -133,7 +138,7 @@ class LoginPageLayout extends StatelessWidget{
                                 child:Text(
                                   "Login",
                                   style: TextStyle(
-                                      color: Colors.black
+                                      color: Colors.white
                                   ),
                                 ),
                               ) ,
@@ -150,12 +155,8 @@ class LoginPageLayout extends StatelessWidget{
                 ),
               )
             ]
-        )
-
-        )
           )
-        )
-    );
+        );
       }
       /*
   void navigateToFLogin(){

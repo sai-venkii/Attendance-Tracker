@@ -1,25 +1,36 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:attendence/widget/f_login.dart';
+import 'package:attendence/widget/s_login.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageLayout extends StatelessWidget{
   final String path;
   final String role;
+  final double h;
+  final double w;
   LoginPageLayout(
       {
         required this.path,
-        required this.role
+        required this.role,
+        required this.h,
+        required this.w
       }
       );
   @override
   Widget build (BuildContext context){
     return Scaffold(
         backgroundColor : Colors.white,
-        body: Column(
+        body:SafeArea(
+          child:Center(
+        child:SingleChildScrollView(
+        child: Column(
+
             crossAxisAlignment:CrossAxisAlignment.start ,
             children: <Widget>[
               SizedBox(
-                height:400,
+                height:h,
+                width: w,
                 child: Stack(
                   children:<Widget>[
                     Positioned(
@@ -94,6 +105,7 @@ class LoginPageLayout extends StatelessWidget{
                               ),
                             ),
                           ),
+                          /*Forget Password
                           SizedBox(height: 20,),
                           Center(
                               child :Text(
@@ -102,7 +114,7 @@ class LoginPageLayout extends StatelessWidget{
                                     color:Color.fromRGBO(196, 135, 198, 1)
                                 ),
                               )
-                          ),
+                          ),*/
                           SizedBox(
                             height: 40
                           ),
@@ -111,16 +123,25 @@ class LoginPageLayout extends StatelessWidget{
                             margin: EdgeInsets.symmetric(horizontal: 60),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Color.fromRGBO(49, 39, 79, 1),
+                              color: Colors.lightBlue[100],
                             ),
-                            child:Center(
-                              child:Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white
-                                ),
+                            child:ElevatedButton(
+                              style: const ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll<Color>(Colors.cyan),
                               ),
-                            ) ,
+                              child:Center(
+                                child:Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Colors.black
+                                  ),
+                                ),
+                              ) ,
+                              onPressed:(){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>FacultyPage()));
+                              },
+
+                            ),
                           ),
                         ],
                       ),
@@ -131,7 +152,18 @@ class LoginPageLayout extends StatelessWidget{
             ]
         )
 
+        )
+          )
+        )
     );
+      }
+      /*
+  void navigateToFLogin(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentPage()));
+  }
+  void navigateToSLogin(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>FacultyPage()));
+*/
   }
 
-}
+

@@ -1,9 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
+
 import './widget/login_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Platform.isAndroid ? await Firebase.initializeApp(
+    options: FirebaseOptions(
+        apiKey: 'AIzaSyCiantarowO3bMNLFoMEbZzCh1Jx932efk',
+        appId: '1:900714223972:android:f183af47dd6f4a18ad0271',
+        messagingSenderId: '900714223972',
+        projectId: 'attendance-36b4d'
+    )
+  ):await Firebase.initializeApp();
   runApp(const MaterialApp(
     home: MyApp(),
   ));

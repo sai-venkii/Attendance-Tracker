@@ -14,6 +14,12 @@ The research highlights the effectiveness of combining multiple verification met
 -- > Timestamp: Captures the time of attendance for accurate records.  
 
 A few snapshots of the project:  
+![image](https://github.com/user-attachments/assets/a4d18bf1-cf2a-4433-b4b3-5a011b9bc7dd)
+
+![image](https://github.com/user-attachments/assets/015ee30b-2155-44fa-95bd-d6e11400f73f)
+![image](https://github.com/user-attachments/assets/4792a821-340b-407c-b6a3-8213dd9d1dab)
+
+
 
 
 A few resources to get you started if this is your first Flutter project:

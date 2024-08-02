@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:attendence/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:attendence/pages/f_login.dart';
+import 'package:attendence/pages/faculty_home.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageLayout extends StatelessWidget{
@@ -16,14 +17,14 @@ class LoginPageLayout extends StatelessWidget{
     required this.h,
     required this.w
   });
-  final TextEditingController usernameController=TextEditingController();
-  final TextEditingController passwordController=TextEditingController();
+  final TextEditingController _usernameController=TextEditingController();
+  final TextEditingController _passwordController=TextEditingController();
   final CollectionReference sample=FirebaseFirestore.instance.collection("Sample");
   Future<void> login() async{
     sample.add(
       {
-        'email': usernameController.text,
-        'password': passwordController.text
+        'email': _usernameController.text,
+        'password': _passwordController.text
       }
     );
   }
@@ -34,36 +35,21 @@ class LoginPageLayout extends StatelessWidget{
         body: Column(
             crossAxisAlignment:CrossAxisAlignment.start ,
             children: <Widget>[
-              SizedBox(
-                height:400,
-                child: Stack(
-                  children:<Widget>[
-                    Positioned(
-                      child: Container(
-                        decoration:BoxDecoration(
-                            image:DecorationImage(
-                              image:AssetImage(path),
-                            )
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              Profile(path),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      role,
+                      "$role Login",
                       style: TextStyle(
                           color: Color.fromRGBO(49, 39, 79, 1),
                           fontWeight:FontWeight.bold,
                           fontSize:30
                       ),
                     ),
-                    SizedBox(height:30,),
+                    SizedBox(height:30),
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -88,7 +74,7 @@ class LoginPageLayout extends StatelessWidget{
                                 )
                             ),
                             child: TextField(
-                              controller: usernameController,
+                              controller: _usernameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Username",
@@ -104,7 +90,7 @@ class LoginPageLayout extends StatelessWidget{
                                 ))
                             ),
                             child: TextField(
-                              controller: passwordController,
+                              controller: _passwordController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Password",
@@ -112,7 +98,7 @@ class LoginPageLayout extends StatelessWidget{
                               ),
                             ),
                           ),
-                          SizedBox(height: 20,),
+                          SizedBox(height: 20),
                           // Center(
                           //     child :Text(
                           //       "Forgot password?",
@@ -143,10 +129,14 @@ class LoginPageLayout extends StatelessWidget{
                                   ),
                                 ),
                               ) ,
-                              onPressed:(){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>FacultyPage()));
-                              },
-
+                              onPressed:() async{
+                                await AuthService().signIn(
+                                    email: _usernameController.text.trim(),
+                                    password: _passwordController.text.trim(),
+                                    isStudent: (role == "Student"? true : false),
+                                    context: context
+                                )
+                              }
                             ),
                           ),
                         ],
@@ -166,6 +156,23 @@ class LoginPageLayout extends StatelessWidget{
   void navigateToSLogin(){
     Navigator.push(context, MaterialPageRoute(builder: (context)=>FacultyPage()));
 */
-  }
-
+}
+Widget Profile(String path){
+  return SizedBox(
+    height:400,
+    child: Stack(
+      children:<Widget>[
+        Positioned(
+          child: Container(
+            decoration:BoxDecoration(
+                image:DecorationImage(
+                  image:AssetImage(path),
+                )
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
 

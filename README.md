@@ -1,6 +1,6 @@
 # Attendance App
 
-A new Flutter project.
+A Flutter project.
 
 ## Getting Started
 
@@ -14,10 +14,18 @@ The research highlights the effectiveness of combining multiple verification met
 -- > Timestamp: Captures the time of attendance for accurate records.  
 
 A few snapshots of the project:  
-![image](https://github.com/user-attachments/assets/a4d18bf1-cf2a-4433-b4b3-5a011b9bc7dd)
+![image](https://github.com/user-attachments/assets/94773567-0c88-4547-93dd-5d0207df3c02)
+![image](https://github.com/user-attachments/assets/49c0f1e8-0906-45ad-8723-1dc49681d2df)
+![image](https://github.com/user-attachments/assets/dc603533-d542-4a11-8e45-a5691326c076)
+![image](https://github.com/user-attachments/assets/e2f34015-0fa8-4a50-bc7e-6474f8259a16)
+![image](https://github.com/user-attachments/assets/b5ee96c6-9b3e-4716-b009-e46644de1b1c)
 
-![image](https://github.com/user-attachments/assets/015ee30b-2155-44fa-95bd-d6e11400f73f)
-![image](https://github.com/user-attachments/assets/4792a821-340b-407c-b6a3-8213dd9d1dab)
+
+
+
+
+
+
 
 
 

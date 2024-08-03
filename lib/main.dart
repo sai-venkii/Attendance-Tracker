@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
-
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children:<Widget>[
                 Text(

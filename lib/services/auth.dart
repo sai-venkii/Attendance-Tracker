@@ -1,9 +1,8 @@
 import 'package:attendence/pages/faculty_home.dart';
 import 'package:attendence/pages/student_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:attendence/print.dart';
 import 'package:flutter/material.dart';
-
 class AuthService{
   Future<void> signIn(
       {
@@ -19,6 +18,9 @@ class AuthService{
             password: password
         );
         await Future.delayed(const Duration(seconds: 1));
+        ScaffoldMessenger.of(context).showSnackBar(
+            snackBarCustom("Login Success", Colors.green)
+        );
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -26,9 +28,23 @@ class AuthService{
           )
         );
       }on FirebaseAuthException catch(e){
-        if (kDebugMode) {
-          print(e.code);
+        String? code=e.code;
+        String? message;
+        if(code=='invalid-email' || code=='invalid-credential'){
+          message="Invalid Credentials";
         }
+        ScaffoldMessenger.of(context).showSnackBar(
+          snackBarCustom(message, Colors.red)
+        );
+        myDebugPrint(e.message);
       }
   }
+}
+SnackBar snackBarCustom(String? message, Color color){
+  return SnackBar(
+    duration: const Duration(seconds: 4),
+    behavior: SnackBarBehavior.floating,
+    content: Text(message ?? 'Failed To Login'),
+    backgroundColor: color,
+  );
 }

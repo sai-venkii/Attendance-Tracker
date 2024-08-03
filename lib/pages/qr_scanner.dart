@@ -2,34 +2,35 @@ import 'dart:convert';
 import 'package:attendence/services/imei_service.dart';
 import 'package:attendence/services/location_service.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
-
-class QrScanner extends StatefulWidget
-{
+class QrScanner extends StatefulWidget {
   const QrScanner({super.key});
+
   @override
   State<QrScanner> createState() => _QrScannerState();
 }
 
-class _QrScannerState extends State<QrScanner>
-{
-  final qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-  LocationService Location = LocationService();
-  DeviceInfoService IMEI = DeviceInfoService();
+class _QrScannerState extends State<QrScanner> {
+  final MobileScannerController _controller = MobileScannerController();
+  final LocationService _location = LocationService();
+  final DeviceInfoService _imei = DeviceInfoService();
+  bool _isScanning = false; // Flag to control scanning
 
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
           Expanded(
             flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
+            child: MobileScanner(
+              controller: _controller,
+              onDetect: (barcodeCapture) {
+                if (_isScanning && barcodeCapture.barcodes.isNotEmpty) {
+                  _processScanData(barcodeCapture.barcodes.first.rawValue!);
+                }
+              },
             ),
           ),
           Expanded(
@@ -46,46 +47,53 @@ class _QrScannerState extends State<QrScanner>
     );
   }
 
-
-  void _onQRViewCreated(QRViewController controller)
-  {
-    this.controller = controller;
+  void _scanQRCode() {
+    _isScanning = true; // Enable scanning
   }
 
-  void _scanQRCode() async
-  {
-    final QRData = await controller?.scannedDataStream.first;
-    if (QRData != null)
-    {
-      try{ //Checking if QRdata is json
-        final jsonData = jsonDecode(QRData.code!);
+  Future<void> _processScanData(String scanData) async {
+    try {
+      final jsonData = jsonDecode(scanData);
 
-        //Code to validate if json contains valid Data Eg: RollNumber, email
-
-        final location = await LocationService.getCurrentPosition();
-         if (location == null) {  //Prompting user to enable Location services
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Location permissions are not granted or location services are disabled. Please enable them.'),
-            ),
-          );
-          return;
-        }
-        final imei = await IMEI.getDeviceIdentifier();
-
-        jsonData['Latitude'] = location.latitude;
-        jsonData['Longitude'] = location.longitude;
-        jsonData['IMEI'] = imei;
-        jsonData['timestamp'] = DateTime.now().toIso8601String();
-
-        print(jsonData);
-      }
-      catch(excep){
+      final locationData = await _location.getCurrentPosition();
+      if (locationData == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Invalid QR code data')),
+          const SnackBar(
+            content: Text('Location permissions are not granted or location services are disabled. Please enable them.'),
+          ),
         );
+        _resetScanner();
+        return;
       }
 
+      final imeiData = await _imei.getDeviceIdentifier();
+
+      jsonData['Latitude'] = locationData.latitude;
+      jsonData['Longitude'] = locationData.longitude;
+      jsonData['IMEI'] = imeiData;
+      jsonData['timestamp'] = DateTime.now().toIso8601String();
+
+      print(jsonData);
+
+      // Optionally, reset scanning after processing
+      _resetScanner();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid QR code data')),
+      );
+      _resetScanner();
     }
-  } //End of Scan Data function
+  }
+
+  void _resetScanner() {
+    _isScanning = false; // Disable scanning
+    _controller.stop();
+    _controller.start();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 }

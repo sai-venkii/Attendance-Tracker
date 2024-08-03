@@ -1,7 +1,6 @@
 import 'package:attendence/pages/faculty_home.dart';
 import 'package:attendence/pages/student_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:attendence/print.dart';
 import 'package:flutter/material.dart';
 class AuthService{
   Future<void> signIn(
@@ -36,7 +35,7 @@ class AuthService{
         ScaffoldMessenger.of(context).showSnackBar(
           snackBarCustom(message, Colors.red)
         );
-        myDebugPrint(e.message);
+        print(e.message);
       }
   }
 }

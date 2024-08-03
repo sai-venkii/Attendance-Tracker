@@ -3,6 +3,7 @@ import 'package:attendence/services/imei_service.dart';
 import 'package:attendence/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:intl/intl.dart';
 
 class QrScanner extends StatefulWidget {
   const QrScanner({super.key});
@@ -15,7 +16,7 @@ class _QrScannerState extends State<QrScanner> {
   final MobileScannerController _controller = MobileScannerController();
   final LocationService _location = LocationService();
   final DeviceInfoService _imei = DeviceInfoService();
-  bool _isScanning = false; // Flag to control scanning
+  bool _isScanning = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _QrScannerState extends State<QrScanner> {
               onDetect: (barcodeCapture) {
                 if (_isScanning && barcodeCapture.barcodes.isNotEmpty) {
                   _processScanData(barcodeCapture.barcodes.first.rawValue!);
+                  _isScanning = false; // Disable scanning after processing the data
                 }
               },
             ),
@@ -48,7 +50,7 @@ class _QrScannerState extends State<QrScanner> {
   }
 
   void _scanQRCode() {
-    _isScanning = true; // Enable scanning
+    _isScanning = true;
   }
 
   Future<void> _processScanData(String scanData) async {
@@ -62,7 +64,6 @@ class _QrScannerState extends State<QrScanner> {
             content: Text('Location permissions are not granted or location services are disabled. Please enable them.'),
           ),
         );
-        _resetScanner();
         return;
       }
 
@@ -71,24 +72,32 @@ class _QrScannerState extends State<QrScanner> {
       jsonData['Latitude'] = locationData.latitude;
       jsonData['Longitude'] = locationData.longitude;
       jsonData['IMEI'] = imeiData;
-      jsonData['timestamp'] = DateTime.now().toIso8601String();
 
-      print(jsonData);
+      final now = DateTime.now();
+      final formattedDate = DateFormat('HH:mm:ss').format(now);
+      jsonData['timestamp'] = formattedDate;
 
-      // Optionally, reset scanning after processing
-      _resetScanner();
+      //print(jsonData);  
+      //
+
+      //JSON DATA CONTAINS THE QRDATA ALONG WITH LAT, LONG, TIME, IMEI
+
+
+      //
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('QR successfully scanned')),
+      );
+
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.pop(context);
+      });
+
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid QR code data')),
       );
-      _resetScanner();
     }
-  }
-
-  void _resetScanner() {
-    _isScanning = false; // Disable scanning
-    _controller.stop();
-    _controller.start();
   }
 
   @override

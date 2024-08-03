@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../widget/class_details.dart';
 
 class FacultyPage extends StatefulWidget {
-  const FacultyPage({super.key});
+  final String email;
+  const FacultyPage({
+    super.key,
+    required this.email
+  });
 
   @override
   State<FacultyPage> createState() => _FacultyPageState();

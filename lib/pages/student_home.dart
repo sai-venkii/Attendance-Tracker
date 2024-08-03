@@ -1,15 +1,12 @@
-import 'dart:nativewrappers/_internal/vm/lib/core_patch.dart';
-
 import 'package:flutter/material.dart';
 
 class StudentPage extends StatefulWidget {
   final String email;
-  const StudentPage(
+  StudentPage(
       {
         super.key,
-        required String email
-      });
-
+        required  this.email
+      }){print(email);}
   @override
   State<StudentPage> createState() => _StudentPageState();
 }

@@ -22,7 +22,7 @@ class AuthService{
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) => isStudent ? const StudentPage() : const FacultyPage()
+              builder: (BuildContext context) => isStudent ? StudentPage(email: email) : FacultyPage(email: email)
           )
         );
       }on FirebaseAuthException catch(e){

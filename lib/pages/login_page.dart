@@ -2,7 +2,6 @@
 
 import 'package:attendence/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:attendence/pages/faculty_home.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageLayout extends StatelessWidget{
@@ -35,7 +34,7 @@ class LoginPageLayout extends StatelessWidget{
         body: Column(
             crossAxisAlignment:CrossAxisAlignment.start ,
             children: <Widget>[
-              Profile(path),
+              profile(path),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
@@ -135,7 +134,7 @@ class LoginPageLayout extends StatelessWidget{
                                     password: _passwordController.text.trim(),
                                     isStudent: (role == "Student"? true : false),
                                     context: context
-                                )
+                                );
                               }
                             ),
                           ),
@@ -157,7 +156,7 @@ class LoginPageLayout extends StatelessWidget{
     Navigator.push(context, MaterialPageRoute(builder: (context)=>FacultyPage()));
 */
 }
-Widget Profile(String path){
+Widget profile(String path){
   return SizedBox(
     height:400,
     child: Stack(

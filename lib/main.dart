@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 
-import './widget/login_page.dart';
+import 'pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async{
@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size; //getting the size property
-    final orientation = MediaQuery.of(context).orientation; //getting the orientation
+//getting the size property
+//getting the orientation
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -47,13 +47,12 @@ class MyApp extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: (){
-           
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context)=>LoginPageLayout(
                                 path: 'assets/images/student_login.png',
-                                role: 'Student Login',
+                                role: 'Student',
                                 h:350,
                                 w:480,
                             )
@@ -115,7 +114,7 @@ class MyApp extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context)=>LoginPageLayout(
                                 path: 'assets/images/faculty_login.png',
-                                role: 'Faculty Login',
+                                role: 'Faculty',
                                 h:300,
                                 w: 400,
 

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ClassDetails extends StatefulWidget {
@@ -19,23 +18,23 @@ class _ClassDetailsState extends State<ClassDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Class Details"),
+        title: const Text("Class Details"),
       ),
       body:Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
         children:<Widget> [
           Container(
-            margin: EdgeInsets.all(40),
+            margin: const EdgeInsets.all(40),
             height: 70,
             width: MediaQuery.of(context).size.width,
             color: Colors.grey.shade100,
             child: DropdownButton<String>(
-              hint: Text("Course"),
+              hint: const Text("Course"),
               dropdownColor: Colors.grey.shade200,
               isExpanded: true,
               value: course,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               onChanged: (String? newValue){
                 setState(() {
                   course=newValue!;
@@ -56,16 +55,16 @@ class _ClassDetailsState extends State<ClassDetails> {
 
             ),
           Container(
-              margin: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(40),
               height: 70,
               width: MediaQuery.of(context).size.width,
               color: Colors.grey.shade100,
               child: DropdownButton<String>(
-                hint: Text("Sem"),
+                hint: const Text("Sem"),
                 dropdownColor: Colors.grey.shade200,
                 isExpanded: true,
                 value: sem,
-                icon: Icon(Icons.arrow_drop_down),
+                icon: const Icon(Icons.arrow_drop_down),
                 onChanged: (String? newValue){
                   setState(() {
                     sem=newValue!;
@@ -83,16 +82,16 @@ class _ClassDetailsState extends State<ClassDetails> {
 
           ),
           Container(
-              margin: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(40),
               height: 70,
               width: MediaQuery.of(context).size.width,
               color: Colors.grey.shade100,
               child: DropdownButton<String>(
-                hint: Text("Hour"),
+                hint: const Text("Hour"),
                 dropdownColor: Colors.grey.shade200,
                 isExpanded: true,
                 value: hour,
-                icon: Icon(Icons.arrow_drop_down),
+                icon: const Icon(Icons.arrow_drop_down),
                 onChanged: (String? newValue){
                   setState(() {
                     hour=newValue!;
@@ -111,7 +110,7 @@ class _ClassDetailsState extends State<ClassDetails> {
           ),
           Container(
             height: 50,
-            margin: EdgeInsets.symmetric(horizontal: 60),
+            margin: const EdgeInsets.symmetric(horizontal: 60),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: Colors.lightBlue[100],
@@ -120,7 +119,7 @@ class _ClassDetailsState extends State<ClassDetails> {
               style: const ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll<Color>(Colors.cyan),
               ),
-              child:Center(
+              child:const Center(
                 child:Text(
                   "Confirm",
                   style: TextStyle(
@@ -134,8 +133,6 @@ class _ClassDetailsState extends State<ClassDetails> {
 
             ),
           ),
-
-
         ]),
       ),
     );

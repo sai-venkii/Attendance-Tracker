@@ -1,3 +1,4 @@
+import 'package:attendence/pages/qr_scanner.dart';
 import 'package:flutter/material.dart';
 
 class StudentPage extends StatefulWidget {
@@ -74,7 +75,12 @@ class _StudentPageState extends State<StudentPage> {
                   ),
                 ) ,
                 onPressed:(){
-
+                  Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context)=>QrScanner()
+                        )
+                    );
                 },
 
               ),

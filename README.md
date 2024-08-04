@@ -4,9 +4,7 @@ A Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter applications.   
-It is an Attendance Portal app for Students, that aims to reduce proxies and also increase accesibility to both Students and Staff.
-This project is inspired by the research paper: https://journal.ump.edu.my/ijsecs/article/view/705/143  
+This project serves as a strating point for Flutter applications, it is an Attendance Portal app for Students with the Primary objective to minimize proxies and enchance accessibility for both students and staff. This application draws inspiration from a research paper, you can access the paper [here.](https://journal.ump.edu.my/ijsecs/article/view/705/143)  
 The research highlights the effectiveness of combining multiple verification methods to enhance attendance systems.
 ## Features
 -- > Qr Code scanning: Provides a quick and secure way for students to mark their attendance.  
@@ -15,16 +13,16 @@ The research highlights the effectiveness of combining multiple verification met
 -- > Timestamp: Captures the time of attendance for accurate records.  
 
 A few snapshots of the project:  
-![mainPage](https://github.com/user-attachments/assets/886c397a-c466-4e1a-8d7c-91efc7704be0)
+![mainPage](https://github.com/user-attachments/assets/9bf28661-9cf3-4d3c-9b51-8ca9c2548846)  
 Student Pages:  
-![studentLogin](https://github.com/user-attachments/assets/2613ee20-35ba-4704-9e4a-e8f95517c44c)
-![studentHome](https://github.com/user-attachments/assets/ce16acf5-a88b-4f46-a32b-829c497f2917)
-![QRPage](https://github.com/user-attachments/assets/44f58a2c-3f0c-45ad-9d40-5576a44e912b)
+![studentLogin](https://github.com/user-attachments/assets/c3563a0b-8dee-43c3-8a37-629a012cfa57)
+![studentHome](https://github.com/user-attachments/assets/c3201ac0-42ab-4f1b-8698-ca453d9c2118)
+![QRPage](https://github.com/user-attachments/assets/0cefff67-bf29-46af-a9a2-06f12d2b6858)    
 
 Lecturer Login:  
-![facultyLogin](https://github.com/user-attachments/assets/3dafe67c-760f-4694-bd21-09bc85a1f08f)
-![facultyPage](https://github.com/user-attachments/assets/d32fe088-88fd-44fa-95d3-9cc3ee2f7345)
-![facultyClassDetails](https://github.com/user-attachments/assets/99cb95e9-1b15-43a4-b203-8973993f3f2b)
+![facultyLogin](https://github.com/user-attachments/assets/1cf9937a-94c4-45cc-8bc8-1387de7cef0a)
+![facultyPage](https://github.com/user-attachments/assets/5d00d6a3-1ad4-49ec-b51a-da730c1a16f9)
+![facultyClassDetails](https://github.com/user-attachments/assets/60b024f7-97a3-4335-8165-32de7bdefda8)
 
 A few resources to get you started if this is your first Flutter project:
 

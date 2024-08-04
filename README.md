@@ -4,13 +4,12 @@ A Flutter project.
 
 ## Getting Started
 
-This project serves as a strating point for Flutter applications, it is an Attendance Portal app for Students with the Primary objective to minimize proxies and enchance accessibility for both students and staff. This application draws inspiration from a research paper, you can access the paper [here.](https://journal.ump.edu.my/ijsecs/article/view/705/143)  
-The research highlights the effectiveness of combining multiple verification methods to enhance attendance systems.
+This project serves as a staring point for Flutter applications, it is an Attendance Portal app for Students with the Primary objective to minimize proxies and enhance accessibility for both students and staff. This application draws inspiration from a research paper, which can be accessed [here. ](https://journal.ump.edu.my/ijsecs/article/view/705/143) The research highlights the effectiveness of combining multiple verification methods to enhance attendance systems.
 ## Features
--- > Qr Code scanning: Provides a quick and secure way for students to mark their attendance.  
--- > Unique Device Identification Number: Ensures the device used for marking attendance is registered.  
--- > GPS: Ensures Attendance is being marked from within the designated classroom.  
--- > Timestamp: Captures the time of attendance for accurate records.  
+#### . Qr Code scanning: Provides a quick and secure way for students to mark their attendance.  
+#### . Unique Device Identification Number: Ensures the device used for marking attendance is registered.  
+#### . GPS: Ensures Attendance is being marked from within the designated classroom.  
+#### . Timestamp: Captures the time of attendance for accurate records.  
 
 A few snapshots of the project:  
 ![mainPage](https://github.com/user-attachments/assets/9bf28661-9cf3-4d3c-9b51-8ca9c2548846)  

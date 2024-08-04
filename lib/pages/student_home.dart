@@ -12,7 +12,7 @@ class StudentPage extends StatefulWidget {
   State<StudentPage> createState() => _StudentPageState();
 }
 
-class _StudentPageState extends State<StudentPage> {
+class _StudentPageState extends State<StudentPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +78,7 @@ class _StudentPageState extends State<StudentPage> {
                   Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context)=>QrScanner()
+                            builder: (context)=>QrScanner(email: widget.email)
                         )
                     );
                 },

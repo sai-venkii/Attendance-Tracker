@@ -1,6 +1,7 @@
-import 'package:attendence/pages/faculty_home.dart';
-import 'package:attendence/pages/student_home.dart';
+import 'package:attendence/pages/Faculty/faculty_home.dart';
+import 'package:attendence/pages/student/student_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:attendence/print.dart';
 import 'package:flutter/material.dart';
 class AuthService{
   Future<void> signIn(
@@ -16,10 +17,10 @@ class AuthService{
             email: email,
             password: password
         );
-        await Future.delayed(const Duration(seconds: 1));
         ScaffoldMessenger.of(context).showSnackBar(
             snackBarCustom("Login Success", Colors.green)
         );
+        await Future.delayed(const Duration(seconds: 2));
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -35,13 +36,18 @@ class AuthService{
         ScaffoldMessenger.of(context).showSnackBar(
           snackBarCustom(message, Colors.red)
         );
-        print(e.message);
+        myDebugPrint(e.message);
+      }catch(e){
+        myDebugPrint(e);
+        ScaffoldMessenger.of(context).showSnackBar(
+            snackBarCustom("Error logging In", Colors.red)
+        );
       }
   }
 }
 SnackBar snackBarCustom(String? message, Color color){
   return SnackBar(
-    duration: const Duration(seconds: 4),
+    duration: const Duration(seconds: 3),
     behavior: SnackBarBehavior.floating,
     content: Text(message ?? 'Failed To Login'),
     backgroundColor: color,

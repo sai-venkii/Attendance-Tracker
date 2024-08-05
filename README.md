@@ -22,12 +22,3 @@ Lecturer Login:
 ![facultyLogin](https://github.com/user-attachments/assets/1cf9937a-94c4-45cc-8bc8-1387de7cef0a)
 ![facultyPage](https://github.com/user-attachments/assets/5d00d6a3-1ad4-49ec-b51a-da730c1a16f9)
 ![facultyClassDetails](https://github.com/user-attachments/assets/60b024f7-97a3-4335-8165-32de7bdefda8)
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widget/class_details.dart';
+import 'class_details.dart';
 
 class FacultyPage extends StatefulWidget {
   final String email;
@@ -24,6 +24,7 @@ class _FacultyPageState extends State<FacultyPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children:<Widget> [
+
           /*Facuty-Checks for student's attendence
           SizedBox(
               height: 40
@@ -77,7 +78,7 @@ class _FacultyPageState extends State<FacultyPage> {
                 ),
               ) ,
               onPressed:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ClassDetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> ClassDetails(email: widget.email,)));
               },
 
             ),

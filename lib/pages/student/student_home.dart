@@ -1,4 +1,4 @@
-import 'package:attendence/pages/qr_scanner.dart';
+import 'package:attendence/pages/student/qr_scanner.dart';
 import 'package:flutter/material.dart';
 
 class StudentPage extends StatefulWidget {

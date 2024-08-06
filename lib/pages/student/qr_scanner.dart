@@ -91,9 +91,7 @@ class _QrScannerState extends State<QrScanner> {
       final imei = document.get('IMEI'); // Checking if IMEI is same as in Database
       if (imei == null || imei.isEmpty) { // If IMEI is empty in Firebase DB
         await FirebaseFirestore.instance
-            .collection('Students')
-            .doc('22PC')
-            .collection('Student_Info')
+            .collection('Student')
             .doc(widget.email)
             .set({'IMEI': imeiData}, SetOptions(merge: true));
       } else { // Check if retrieved IMEI and database's IMEI are the same

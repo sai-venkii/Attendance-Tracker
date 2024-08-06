@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:attendence/pages/Faculty/QR_display.dart';
 import 'package:attendence/print.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,6 @@ class _ClassDetailsState extends State<ClassDetails> {
   late String email;
   String? selected_course="";
   List<String> courses = [];
-  String sem = "1";
-
   String hour = "1";
 
   @override
@@ -143,9 +142,17 @@ class _ClassDetailsState extends State<ClassDetails> {
               margin: const EdgeInsets.only(top: 50),
               child: ElevatedButton(
                   onPressed: (){
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=>QrDisplay(
+                          email: email,
+                          courseId: selected_course ?? 'Invalid',
+                          hour: hour,
+                        )
+                      )
+                    );
                   },
-                  child: const Text("Confirm")
+                  child: const Text("Generate")
               ),
             )
           ]
